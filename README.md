@@ -1,7 +1,7 @@
 # networkspeedcheckbot 
 
 A **Telegram Bot** built in **Go**.  
-Designed with **love**, for a telegram user to check internet speed.
+Designed with **love**, for any telegram user to check internet speed.
 
 ## this bot depends speedtest-go and go-telegram-bot-api  modules
 ## Features
