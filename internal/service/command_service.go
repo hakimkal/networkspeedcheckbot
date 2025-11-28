@@ -9,7 +9,7 @@ import (
 )
 
 func Start(bot *tgbotapi.BotAPI, update tgbotapi.Update) {
-	text := "Hi, here you can run your server speed checks!."
+	text := "Hello,You can run your server speed checks!."
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
 	msg.ReplyMarkup = keyboards.CmdKeyboard()
 	if _, err := bot.Send(msg); err != nil {
@@ -48,8 +48,7 @@ func UploadSpeedCheck(bot *tgbotapi.BotAPI, update tgbotapi.Update, scs networkS
 	}
 }
 func SetTaskCallback(bot *tgbotapi.BotAPI, update tgbotapi.Update) {
-	text := "Todo successfully created"
-
+	 
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
 	if _, err := bot.Send(msg); err != nil {
 		panic(err)

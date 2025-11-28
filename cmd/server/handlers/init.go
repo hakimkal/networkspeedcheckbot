@@ -12,8 +12,6 @@ func Init(bot *tgbotapi.BotAPI) {
 			Callbacks(bot, update)
 		} else if update.Message.IsCommand() {
 			Commands(bot, update)
-		} else {
-			Messages(bot, update)
 		}
 	}
 }

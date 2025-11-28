@@ -1,8 +1,6 @@
 package handlers
 
 import (
-	"log"
-
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/hakimkal/networkspeedcheckbot/internal/service"
 	networkSpeedCheckService "github.com/hakimkal/networkspeedcheckbot/internal/service/speedcheck"
@@ -11,7 +9,7 @@ import (
 
 func Callbacks(bot *tgbotapi.BotAPI, update tgbotapi.Update) {
 	cmd, _ := util.GetKeyValue(update.CallbackQuery.Data)
-	log.Println("callback received:", cmd)
+	 
 	var scs = networkSpeedCheckService.NewSpeedcheckService()
 
 	switch {

@@ -18,6 +18,7 @@ func main() {
 	}
 
 	bot := client.Init(cfg.TelegramApiToken)
+
 	handlers.Init(bot)
 
 	log.Printf("starting networkspeedcheckbot...")
