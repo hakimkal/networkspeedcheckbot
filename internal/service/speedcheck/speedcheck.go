@@ -1,8 +1,8 @@
-package service
+package speedcheck
 
 import (
-	"fmt"
 	"log"
+	"time"
 
 	"github.com/showwin/speedtest-go/speedtest"
 )
@@ -36,15 +36,15 @@ func initializeServer() *speedtest.Server {
 
 }
 
-func (scs *SpeedcheckService) PingTest() {
+func (speedCheckService *SpeedcheckService) PingTest() float64 {
 
-	server := scs.Server
+	server := speedCheckService.Server
 	// Perform ping test (latency)
 	var err = server.PingTest(nil)
 	if err != nil {
 		log.Fatalf("Error during ping test: %v", err)
 	}
-	fmt.Printf("Latency: %s\n", server.Latency)
+	return float64(server.Latency) / float64(time.Second)
 
 }
 
@@ -60,8 +60,8 @@ func (speedCheckService *SpeedcheckService) CheckDownloadSpeed() float64 {
 	return downloadSpeedMbps
 }
 
-func (speedcheckService *SpeedcheckService) CheckUploadSpeed() {
-	server := speedcheckService.Server
+func (speedCheckService *SpeedcheckService) CheckUploadSpeed() float64 {
+	server := speedCheckService.Server
 	// Perform upload test
 	err := server.UploadTest()
 	if err != nil {
@@ -69,5 +69,5 @@ func (speedcheckService *SpeedcheckService) CheckUploadSpeed() {
 	}
 	// Convert ULSpeed from bits per second to Mbps
 	uploadSpeedMbps := float64(server.ULSpeed) / 1_000_000 * 8
-	fmt.Printf("Upload Speed: %.2f Mbps\n", uploadSpeedMbps)
+	return uploadSpeedMbps
 }
